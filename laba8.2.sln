@@ -1,31 +1,29 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32922.545
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "laba8.2", "laba8.2\laba8.2.vcxproj", "{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Debug|x64.ActiveCfg = Debug|x64
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Debug|x64.Build.0 = Debug|x64
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Debug|x86.ActiveCfg = Debug|Win32
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Debug|x86.Build.0 = Debug|Win32
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Release|x64.ActiveCfg = Release|x64
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Release|x64.Build.0 = Release|x64
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Release|x86.ActiveCfg = Release|Win32
-		{ABE78775-5B02-4ED8-86C0-EA643F17A7C3}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {30264EEC-08C6-4C15-8E38-6FFDB6DA93F6}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string input;
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, input);
+
+    bool found = false;
+    size_t pos = 0;
+    while (pos != std::string::npos && !found) {
+        pos = input.find_first_of(" \t\n", pos);
+        if (pos != std::string::npos) {
+            pos++;
+            if (input[pos] == 'a') {
+                found = true;
+            }
+        }
+    }
+
+    if (found) {
+        std::cout << "The string contains a word that begins with 'a'" << std::endl;
+    }
+    else {
+        std::cout << "The string does not contain a word that begins with 'a'" << std::endl;
+    }
+
+    return 0;
+}
